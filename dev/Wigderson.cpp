@@ -13,7 +13,7 @@ struct my_vertex{
 class Wigderson_coloring {
     public:
         Wigderson_coloring(const std::vector<my_vertex>& other) : G_(other) {}
-        int Find_max_degree() const;
+        int find_max_degree() const;
         int size() const {
             return G_.size();
         }
@@ -66,7 +66,7 @@ class Wigderson_coloring {
         }
 
         int wigderson() {
-            int max_degree = Find_max_degree();
+            int max_degree = find_max_degree();
             int sqr_size = static_cast<int>(std::sqrt(G_.size()));
             if (sqr_size >= max_degree) {
                 return greedy_coloring();
@@ -111,19 +111,13 @@ class Wigderson_coloring {
 
 };
 
-int Wigderson_coloring::Find_max_degree() const {
+int Wigderson_coloring::find_max_degree() const {
     size_t max_ = 0;
     for (const my_vertex& vertex: G_){
         max_ = std::max(max_, vertex.neighbors.size());
     }
     return max_;
 }
-
-// class Bergler_and_Rompel_coloring {
-//     private: 
-//         std::vector<my_vertex> G_;
-//         std::vector<
-// };
 
 int main () {
     int size_;
